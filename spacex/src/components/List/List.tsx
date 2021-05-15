@@ -1,21 +1,20 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState, useEffect, SetStateAction } from 'react';
 import { Launch } from '../../utils/dataNormalisation';
 import ListItem from '../ListItem/ListItem';
 import { StyledList } from './styles';
 
 interface ListProps {
-  listItems: [Launch] | null;
+  listItems: Launch[] | null;
 }
 
 const List: FunctionComponent<ListProps> = ({ listItems }) => {
-  return (
-    <StyledList>
-      {listItems &&
-        listItems.map((item: Launch, index) => (
-          <ListItem item={item} index={index} />
-        ))}
-    </StyledList>
-  );
+  const renderItems = (items: any) =>
+    items &&
+    items.map((item: Launch, index: number) => (
+      <ListItem item={item} index={index} key={item.name} />
+    ));
+
+  return <StyledList>{renderItems(listItems)}</StyledList>;
 };
 
 export default List;

@@ -34,6 +34,7 @@ export const Date = styled.div`
   font-size: 1rem;
   font-weight: 400;
   text-align: right;
+  margin-bottom: 0.5rem;
 `;
 
 export const Rocket = styled.div`

@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
+import { StyledButton } from './styles';
 
 interface ActionProps {
   filterLaunches: (year: number) => void;
@@ -9,12 +10,21 @@ const Actions: FunctionComponent<ActionProps> = ({
   filterLaunches,
   sortLaunches,
 }) => {
+  const [ascending, setAscending] = useState(true);
+  const ascendingText = 'Sort By Ascending';
+  const descendingText = 'Sort By Descending';
+
   const handleChange = () => {
     filterLaunches(2008);
   };
+
+  const toggleButton = () => {
+    setAscending(!ascending);
+    sortLaunches(ascending ? 'asc' : 'des');
+  };
   const handleClick = (e: React.MouseEvent): void => {
     e.preventDefault();
-    sortLaunches('asc');
+    toggleButton();
   };
 
   return (
@@ -24,7 +34,9 @@ const Actions: FunctionComponent<ActionProps> = ({
         <option>2000</option>
       </select>
 
-      <button onClick={(e) => handleClick(e)}>Sort</button>
+      <StyledButton onClick={(e) => handleClick(e)}>
+        {ascending ? ascendingText : descendingText}
+      </StyledButton>
     </div>
   );
 };

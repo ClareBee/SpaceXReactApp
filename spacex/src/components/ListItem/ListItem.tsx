@@ -13,7 +13,7 @@ const ListItem: FunctionComponent<ListItemProps> = ({
   item: { name, date_utc },
 }) => {
   return (
-    <StyledListItem>
+    <StyledListItem key={name}>
       <Index>#{index + 1}</Index>
       <Name>
         <p>{name}</p>

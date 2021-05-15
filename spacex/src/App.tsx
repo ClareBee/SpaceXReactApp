@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState, useEffect } from 'react';
 
 import { Loader } from './components/Loader/Loader';
 import { useGet } from './services/api/useGet';
@@ -11,19 +11,24 @@ import { filterByYear } from './utils/filterByYear';
 import { sortByYear } from './utils/sortByYear';
 import ListContainer from './containers/ListContainer';
 import Actions from './components/Actions/Actions';
+import { Launch } from './utils/dataNormalisation';
 
 const App: FunctionComponent = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Launch[] | []>([]);
   const { loading, error, data: items } = useGet('/launches');
 
   const filterLaunches = (year: number) => {
-    const data = filterByYear(items, year);
-    setData(data);
+    if (!items) return;
+    const filtered = filterByYear(items, year);
+    setData(filtered);
   };
 
   const sortLaunches = (flag: string) => {
-    const data = sortByYear(items, flag);
-    setData(data);
+    console.log('flag', flag);
+    if (!items) return;
+    const sorted = sortByYear(items, flag);
+    console.log('sorted', sorted[0].date_utc);
+    setData(sorted);
   };
 
   if (error) return <div>Something went wrong</div>;
@@ -33,20 +38,15 @@ const App: FunctionComponent = () => {
       <GlobalStyle />
       <Header />
       <Layout>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <RocketImage />
-            <ListContainer>
-              <Actions
-                filterLaunches={filterLaunches}
-                sortLaunches={sortLaunches}
-              />
-              <List listItems={data} />
-            </ListContainer>
-          </>
-        )}
+        <RocketImage />
+
+        <ListContainer>
+          <Actions
+            filterLaunches={filterLaunches}
+            sortLaunches={sortLaunches}
+          />
+          {loading || !data ? <Loader /> : <List listItems={data} />}
+        </ListContainer>
       </Layout>
     </>
   );
