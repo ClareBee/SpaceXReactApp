@@ -5,12 +5,9 @@ import { Loader } from './components/Loader/Loader';
 import { useGet } from './services/api/useGet';
 import { GlobalStyle } from './styles/GlobalStyle';
 import List from './components/List/List';
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: blue;
-`;
+import Layout from './containers/Layout';
+import RocketImage from './components/RocketImage/RocketImage';
+import { Header } from './components/Header/Header';
 
 const App: FunctionComponent = () => {
   const { loading, error, data } = useGet('/launches');
@@ -21,8 +18,12 @@ const App: FunctionComponent = () => {
   return (
     <>
       <GlobalStyle />
-      <Title data-testid="header">Hello world</Title>
-      <List listItems={data} />
+      <Header />
+
+      <Layout>
+        <RocketImage />
+        <List listItems={data} />
+      </Layout>
     </>
   );
 };
