@@ -26,7 +26,6 @@ const App: FunctionComponent = () => {
     setData(data);
   };
 
-  if (loading) return Loader();
   if (error) return <div>Something went wrong</div>;
 
   return (
@@ -34,14 +33,20 @@ const App: FunctionComponent = () => {
       <GlobalStyle />
       <Header />
       <Layout>
-        <RocketImage />
-        <ListContainer>
-          <Actions
-            filterLaunches={filterLaunches}
-            sortLaunches={sortLaunches}
-          />
-          <List listItems={data} />
-        </ListContainer>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <RocketImage />
+            <ListContainer>
+              <Actions
+                filterLaunches={filterLaunches}
+                sortLaunches={sortLaunches}
+              />
+              <List listItems={data} />
+            </ListContainer>
+          </>
+        )}
       </Layout>
     </>
   );
