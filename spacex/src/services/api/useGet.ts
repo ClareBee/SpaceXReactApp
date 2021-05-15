@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = 'https://api.spacexdata.com/v4';
 
 export const useGet = (url: string) => {
   const [data, setData] = useState(null);
@@ -10,7 +10,9 @@ export const useGet = (url: string) => {
   useEffect(() => {
     axios(baseUrl + url)
       .then((res) => {
-        setData(res.data);
+        if (res.data.length > 0) {
+          setData(res.data);
+        }
       })
       .catch((err) => {
         setError(err);
