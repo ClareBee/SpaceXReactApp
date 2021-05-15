@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useGet } from './services/api/get';
 import { GlobalStyle } from './styles/GlobalStyle';
 
 const Title = styled.h1`
@@ -7,11 +8,15 @@ const Title = styled.h1`
   color: blue;
 `;
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <Title>Hello world</Title>
-  </>
-);
+const App = () => {
+  const { loading, error, data } = useGet('/launches');
+  console.log('api response', loading, error, data);
+  return (
+    <>
+      <GlobalStyle />
+      <Title>Hello world</Title>
+    </>
+  );
+};
 
 export default App;
