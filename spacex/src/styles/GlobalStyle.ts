@@ -5,5 +5,6 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
   body {
     font-family: 'Brandon Grotesque';
+    box-sizing: border-box;
   }
 `;

@@ -12,17 +12,21 @@ import { Header } from './components/Header/Header';
 const App: FunctionComponent = () => {
   const { loading, error, data } = useGet('/launches');
 
-  if (loading) return Loader();
   if (error) return <div>Something went wrong</div>;
 
   return (
     <>
       <GlobalStyle />
       <Header />
-
       <Layout>
-        <RocketImage />
-        <List listItems={data} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <RocketImage />
+            <List listItems={data} />
+          </>
+        )}
       </Layout>
     </>
   );
