@@ -10,7 +10,6 @@ export const useGet = (url: string) => {
   useEffect(() => {
     axios(baseUrl + url)
       .then((res) => {
-        console.log(res);
         setData(res.data);
       })
       .catch((err) => {
