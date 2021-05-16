@@ -1,4 +1,3 @@
 [build]
   base = "spacex"
-  command = "yarn build && yarn export"
-  publish = "out"
+  command = "yarn build"
