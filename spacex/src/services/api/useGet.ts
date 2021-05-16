@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const baseUrl = 'https://api.spacexdata.com/v4';
 
 export const useGet = (url: string) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -12,6 +12,8 @@ export const useGet = (url: string) => {
       .then((res) => {
         if (res.data.length > 0) {
           setData(res.data);
+        } else {
+          setData([]);
         }
       })
       .catch((err) => {

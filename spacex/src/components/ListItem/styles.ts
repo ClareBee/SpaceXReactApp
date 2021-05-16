@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledListItem = styled.li`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 1.125rem 1rem 1.0625rem 2rem;
@@ -34,6 +33,7 @@ export const Date = styled.div`
   font-size: 1rem;
   font-weight: 400;
   text-align: right;
+  margin-bottom: 0.5rem;
 `;
 
 export const Rocket = styled.div`

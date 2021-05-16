@@ -1,4 +1,27 @@
-const testLaunches = [
+import { Launch } from '../types/types';
+
+export const launches: Launch[] = [
+  {
+    rocket: 'Falcon 1',
+    name: 'FalconSat',
+    date_utc: '2006-03-24T22:30:00.000Z',
+    id: '5eb87cd9ffd86e000604b32a',
+  },
+  {
+    rocket: 'Falcon 1',
+    name: 'RazakSat',
+    date_utc: '2009-07-13T03:35:00.000Z',
+    id: '5eb87cdcffd86e000604b32e',
+  },
+  {
+    rocket: 'Falcon 1',
+    name: 'DemoSat',
+    date_utc: '2007-03-21T01:10:00.000Z',
+    id: '5eb87cdaffd86e000604b32b',
+  },
+];
+
+export const testLaunches = [
   {
     fairings: {
       reused: false,
@@ -214,5 +237,3 @@ const testLaunches = [
     id: '5eb87cdaffd86e000604b32b',
   },
 ];
-
-export default testLaunches;

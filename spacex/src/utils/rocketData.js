@@ -1,4 +1,4 @@
-const testRockets = [
+export const testRockets = [
   {
     height: {
       meters: 22.25,

@@ -1,7 +1,13 @@
+import { Launch } from '../types/types';
 import { getYear } from './getYearFromUnix';
-export const filterByYear = (data: any, year: number) => {
-  return data.filter((item: any) => {
-    const itemYear = getYear(item.date_utc);
-    return itemYear === year;
-  });
+
+export const filterByYear = (
+  data: Launch[] | null,
+  year: number
+): Launch[] | [] => {
+  if (!data) {
+    return [];
+  }
+  const dataToFilter = [...data];
+  return dataToFilter.filter((item: any) => getYear(item.date_utc) === year);
 };

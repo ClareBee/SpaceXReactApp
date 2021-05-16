@@ -1,21 +1,23 @@
 import { FunctionComponent } from 'react';
-import { Launch } from '../../utils/dataNormalisation';
+import { Launch } from '../../types/types';
 import ListItem from '../ListItem/ListItem';
 import { StyledList } from './styles';
 
 interface ListProps {
-  listItems: [Launch] | null;
+  listItems: Launch[] | null;
 }
 
 const List: FunctionComponent<ListProps> = ({ listItems }) => {
-  return (
-    <StyledList>
-      {listItems &&
-        listItems.map((item: Launch, index) => (
-          <ListItem item={item} index={index} />
-        ))}
-    </StyledList>
-  );
+  const renderItems = (items: Launch[] | null) =>
+    items && items.length > 0 ? (
+      items.map((item: Launch, index: number) => (
+        <ListItem item={item} index={index} key={item.name} />
+      ))
+    ) : (
+      <div>No launches available</div>
+    );
+
+  return <StyledList>{renderItems(listItems)}</StyledList>;
 };
 
 export default List;

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Launch } from '../../utils/dataNormalisation';
+import { Launch } from '../../types/types';
 import { formatDate } from '../../utils/formatDate';
 import { StyledListItem, Index, Name, Details, Date, Rocket } from './styles';
 
@@ -10,17 +10,17 @@ interface ListItemProps {
 
 const ListItem: FunctionComponent<ListItemProps> = ({
   index,
-  item: { name, date_utc },
+  item: { rocket, id, name, date_utc },
 }) => {
   return (
-    <StyledListItem>
+    <StyledListItem key={id}>
       <Index>#{index + 1}</Index>
       <Name>
         <p>{name}</p>
       </Name>
       <Details>
         <Date>{formatDate(date_utc)}</Date>
-        <Rocket>Rocket</Rocket>
+        <Rocket>n/a</Rocket>
       </Details>
     </StyledListItem>
   );
