@@ -1,4 +1,4 @@
-import { Launch } from './dataNormalisation';
+import { Launch } from '../types/types';
 import { getYear } from './getYearFromUnix';
 
 export const sortByYear = (
@@ -8,8 +8,7 @@ export const sortByYear = (
   if (!data) {
     return [];
   }
-  const dataToSort = [...data];
-  const sorted = dataToSort.sort(
+  const sorted = [...data].sort(
     (a: any, b: any) => getYear(a.date_utc) - getYear(b.date_utc)
   );
   return order === 'asc' ? sorted : sorted.reverse();

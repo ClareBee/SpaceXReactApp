@@ -11,7 +11,7 @@ import { filterByYear } from './utils/filterByYear';
 import { sortByYear } from './utils/sortByYear';
 import ListContainer from './containers/ListContainer';
 import Actions from './components/Actions/Actions';
-import { Launch } from './utils/dataNormalisation';
+import { Launch } from './types/types';
 
 const App: FunctionComponent = () => {
   const [data, setData] = useState<Launch[] | []>([]);

@@ -1,5 +1,5 @@
-import { FunctionComponent, useState, useEffect, SetStateAction } from 'react';
-import { Launch } from '../../utils/dataNormalisation';
+import { FunctionComponent } from 'react';
+import { Launch } from '../../types/types';
 import ListItem from '../ListItem/ListItem';
 import { StyledList } from './styles';
 

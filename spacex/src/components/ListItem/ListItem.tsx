@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Launch } from '../../utils/dataNormalisation';
+import { Launch } from '../../types/types';
 import { formatDate } from '../../utils/formatDate';
 import { StyledListItem, Index, Name, Details, Date, Rocket } from './styles';
 

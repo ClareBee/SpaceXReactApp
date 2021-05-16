@@ -46,4 +46,10 @@ describe('sort by Year', () => {
     const result = sortByYear(data, 'desc');
     expect(result[0].name).toEqual('launchB');
   });
+
+  it('returns empty array if data missing', () => {
+    const data = null;
+    const result = sortByYear(data, 'desc');
+    expect(result).toEqual([]);
+  });
 });
