@@ -7,7 +7,7 @@ import List from './List';
 describe('List', () => {
   it('displays launches', async () => {
     render(<List listItems={launches} />);
-    expect(screen.getByRole('Launches')).toBeInTheDocument();
+    expect(screen.getByRole('list')).toBeInTheDocument();
     expect(screen.getByText(/FalconSat/)).toContainHTML('<p>FalconSat</p>');
   });
 });

@@ -18,7 +18,7 @@ const List: FunctionComponent<ListProps> = ({ listItems }) => {
     );
 
   return (
-    <StyledList role="Launches" data-testid="launches">
+    <StyledList role="list" data-testid="launches" tabIndex={0}>
       {renderItems(listItems)}
     </StyledList>
   );
