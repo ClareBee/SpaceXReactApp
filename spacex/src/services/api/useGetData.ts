@@ -17,7 +17,6 @@ export const useGetData = (
     const rockets = getApi(rocketsUrl);
     Promise.all([launches, rockets])
       .then((responses) => {
-        console.log(...responses);
         setData(normaliseData(responses[0], responses[1]));
       })
       .catch((err) => {
@@ -27,6 +26,6 @@ export const useGetData = (
         setLoading(false);
       });
   }, [launchesUrl, rocketsUrl, reload]);
-  console.log('data', data);
+
   return { data, error, loading };
 };
