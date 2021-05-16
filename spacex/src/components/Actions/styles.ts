@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ActionsContainer = styled.div`
   width: 100%;
   display: flex;
+  margin-top: 4.0625rem;
   margin-bottom: 0.75rem;
   justify-content: flex-end;
   align-items: stretch;
