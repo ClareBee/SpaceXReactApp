@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 const baseUrl = 'https://api.spacexdata.com/v4';
 
-export const useGet = (url: string) => {
+export const useGet = (url: string, reload: boolean) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ export const useGet = (url: string) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [url]);
+  }, [url, reload]);
 
   return { data, error, loading };
 };

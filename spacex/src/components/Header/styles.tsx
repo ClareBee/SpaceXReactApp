@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledHeader = styled.header`
   width: 100%;
@@ -29,6 +29,10 @@ export const Title = styled.h1`
   margin-left: -1rem;
 `;
 
+interface SpinnerProps {
+  reloading: boolean;
+}
+
 export const RefreshButton = styled.button`
   height: 2.6875rem;
   width: 8.375rem;
@@ -40,9 +44,25 @@ export const RefreshButton = styled.button`
   font-size: 1rem;
   border: none;
   background-color: #215184;
-  background-image: url(/refresh.png);
-  background-repeat: no-repeat;
-  background-position: 95% 50%;
   border-top-left-radius: 20.5px;
   border-bottom-left-radius: 20.5px;
+  cursor: pointer;
 `;
+
+export const Spinner = styled.img<SpinnerProps>((props) => {
+  return css`
+    @keyframes spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    margin-left: 0.25rem;
+    animation-name: ${props.reloading ? 'spinner' : ''};
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+  `;
+});

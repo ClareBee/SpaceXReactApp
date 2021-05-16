@@ -5,8 +5,9 @@ export const StyledListItem = styled.li`
   justify-content: space-between;
   padding: 1.125rem 1rem 1.0625rem 2rem;
   color: #545454;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  margin-top: 0.15rem;
   margin-bottom: 0.5rem;
 `;
 
