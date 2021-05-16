@@ -3,7 +3,7 @@
 A simple React App that shows all past and upcoming launches for SpaceX, using the public API v4: https://github.com/r-spacex/SpaceX-API/tree/master/docs/v4
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/ClareBee/SpaceXReactApp/blob/main/instructions/spacex.jpg">
+  <img width="460" height="300" src="https://github.com/ClareBee/SpaceXReactApp/blob/main/instructions/spacex.jpg" alt="spaceX image>
 </p>
 
 ---
@@ -34,4 +34,6 @@ App will launch on http://localhost:3000
 - better browser/device support/testing
 - art design for images (default smallest one used due to time constraints/performance payoff) & image transformation to WebP (Lighthouse score lower due to image aspect-ratio)
 
-![Lighthouse performance](https://github.com/ClareBee/SpaceXReactApp/blob/main/instructions/Lighthouse.jpg)
+<p align="center">
+  <img width="460" height="300" src="https://github.com/ClareBee/SpaceXReactApp/blob/main/instructions/Lighthouse.jpg" alt="lighthouse score">
+</p>
