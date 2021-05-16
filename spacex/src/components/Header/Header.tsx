@@ -19,6 +19,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
   reload,
 }) => {
   const [reloading, setReloading] = useState(false);
+
   useEffect(() => {
     triggerSpin(reload);
   }, [reload]);
@@ -36,7 +37,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         <StyledLogo src={Logo} alt="logo" />
         <Title>LAUNCHES</Title>
       </LogoContainer>
-      <RefreshButton onClick={handleReload}>
+      <RefreshButton onClick={handleReload} role="button">
         Reload Data
         <Spinner src={Reload} alt="spinner" reloading={reloading} />
       </RefreshButton>
