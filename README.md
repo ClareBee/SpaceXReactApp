@@ -32,4 +32,4 @@ App will launch on http://localhost:3000
 - better browser/device support/testing
 - art design for images (default smallest one used due to time constraints/performance payoff) & image transformation to WebP (Lighthouse score lower due to image aspect-ratio)
 
-[Lighthouse performance]('./../instructions/Lighthouse.jpg)
+![Lighthouse performance]('./../instructions/Lighthouse.jpg)
