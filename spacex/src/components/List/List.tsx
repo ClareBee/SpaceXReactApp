@@ -17,7 +17,11 @@ const List: FunctionComponent<ListProps> = ({ listItems }) => {
       <div>No launches available</div>
     );
 
-  return <StyledList>{renderItems(listItems)}</StyledList>;
+  return (
+    <StyledList role="Launches" data-testid="launches">
+      {renderItems(listItems)}
+    </StyledList>
+  );
 };
 
 export default List;

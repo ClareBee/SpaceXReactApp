@@ -39,7 +39,7 @@ const Actions: FunctionComponent<ActionProps> = ({
       years.push(i);
     }
     return years.map((year) => (
-      <option value={year} key={year}>
+      <option value={year} key={year} data-testid="select-option">
         {year}
       </option>
     ));
