@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { sharedBtnStyles } from '../Actions/styles';
 
 export const StyledHeader = styled.header`
   width: 100%;
@@ -22,7 +23,7 @@ export const StyledLogo = styled.img`
 `;
 
 export const Title = styled.h1`
-  color: #545454;
+  color: var(--brand-grey, grey);
   font-weight: 400;
   letter-spacing: 1.09px;
   padding-top: 0.5rem;
@@ -34,19 +35,12 @@ interface SpinnerProps {
 }
 
 export const RefreshButton = styled.button`
+  ${sharedBtnStyles}
   height: 2.6875rem;
   width: 8.375rem;
   margin-top: 1.5rem;
-  background: #215184;
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  font-size: 1rem;
-  border: none;
-  background-color: #215184;
   border-top-left-radius: 20.5px;
   border-bottom-left-radius: 20.5px;
-  cursor: pointer;
 `;
 
 export const Spinner = styled.img<SpinnerProps>((props) => {

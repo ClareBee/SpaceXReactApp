@@ -4,7 +4,7 @@ export const StyledListItem = styled.li`
   display: flex;
   justify-content: space-between;
   padding: 1.125rem 1rem 1.0625rem 2rem;
-  color: #545454;
+  color: var(--brand-grey, grey);
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin-top: 0.15rem;

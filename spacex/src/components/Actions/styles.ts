@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ActionsContainer = styled.div`
   width: 100%;
@@ -12,40 +12,39 @@ export const ActionsContainer = styled.div`
   }
 `;
 
+export const sharedBtnStyles = css`
+  color: var(--brand-white, white);
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: var(--primary-blue, blue);
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-shadow: #545454 0px 0px 10px;
+  :hover,
+  :focus {
+    background-color: var(--secondary-blue, darkblue);
+  }
+`;
+
 export const StyledButton = styled.button`
+  ${sharedBtnStyles}
   margin: 0;
   margin-left: 1rem;
   width: 10.5rem;
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  font-size: 1rem;
   padding: 0;
-  background-color: #215184;
   background-image: url(/sort.png);
-  background-repeat: no-repeat;
-  background-position: 95% 50%;
-  border: none;
-  border-radius: 2px;
   vertical-align: center;
   text-align: center;
-  cursor: pointer;
 `;
 
 export const StyledSelect = styled.select`
+  ${sharedBtnStyles}
   width: 9.75rem;
-  background: #215184;
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  font-size: 1rem;
   padding: 0.625rem 1rem;
-  border: none;
-  background-color: #215184;
   background-image: url(/select.png);
-  background-repeat: no-repeat;
-  background-position: 95% 50%;
-  border-radius: 2px;
   appearance: none;
-  cursor: pointer;
 `;

@@ -47,7 +47,11 @@ const Actions: FunctionComponent<ActionProps> = ({
 
   return (
     <ActionsContainer>
-      <StyledSelect onChange={handleChange} value={selectedYear}>
+      <StyledSelect
+        onChange={handleChange}
+        value={selectedYear}
+        aria-label="Filter by Year"
+      >
         <option value="undefined">Filter by Year</option>
         {selectOptions()}
       </StyledSelect>
