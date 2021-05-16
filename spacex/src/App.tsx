@@ -15,8 +15,8 @@ import { Launch } from './types/types';
 
 const App: FunctionComponent = () => {
   const [data, setData] = useState<Launch[] | []>([]);
-  const { loading, error, data: items } = useGet('/launches');
-
+  const [reload, setReload] = useState(false);
+  const { loading, error, data: items } = useGet('/launches', reload);
   // populate from api items on initial load
   useEffect(() => {
     if (items.length > 0 && data.length === 0) {
@@ -36,15 +36,19 @@ const App: FunctionComponent = () => {
     setData(sorted);
   };
 
+  const handleReload = () => {
+    // trigger fresh data
+    setReload(!reload);
+  };
+
   if (error) return <div>Something went wrong</div>;
 
   return (
     <>
       <GlobalStyle />
-      <Header />
+      <Header handleReload={handleReload} />
       <Layout>
         <RocketImage />
-
         <ListContainer>
           <Actions
             filterLaunches={filterLaunches}

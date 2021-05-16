@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'react';
 import {
   StyledHeader,
   LogoContainer,
@@ -7,14 +8,17 @@ import {
 } from './styles';
 import Logo from '../../assets/spacex-logo.png';
 
-export const Header = () => {
+interface HeaderProps {
+  handleReload: () => void;
+}
+export const Header: FunctionComponent<HeaderProps> = ({ handleReload }) => {
   return (
     <StyledHeader>
       <LogoContainer>
         <StyledLogo src={Logo} alt="logo" />
         <Title>LAUNCHES</Title>
       </LogoContainer>
-      <RefreshButton>Reload Data</RefreshButton>
+      <RefreshButton onClick={handleReload}>Reload Data</RefreshButton>
     </StyledHeader>
   );
 };

@@ -45,4 +45,5 @@ export const RefreshButton = styled.button`
   background-position: 95% 50%;
   border-top-left-radius: 20.5px;
   border-bottom-left-radius: 20.5px;
+  cursor: pointer;
 `;

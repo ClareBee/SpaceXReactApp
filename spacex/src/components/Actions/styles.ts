@@ -7,6 +7,9 @@ export const ActionsContainer = styled.div`
   margin-bottom: 0.75rem;
   justify-content: flex-end;
   align-items: stretch;
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -26,6 +29,7 @@ export const StyledButton = styled.button`
   border-radius: 2px;
   vertical-align: center;
   text-align: center;
+  cursor: pointer;
 `;
 
 export const StyledSelect = styled.select`
@@ -43,4 +47,5 @@ export const StyledSelect = styled.select`
   background-position: 95% 50%;
   border-radius: 2px;
   appearance: none;
+  cursor: pointer;
 `;
