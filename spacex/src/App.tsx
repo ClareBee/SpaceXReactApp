@@ -17,6 +17,13 @@ const App: FunctionComponent = () => {
   const [data, setData] = useState<Launch[] | []>([]);
   const { loading, error, data: items } = useGet('/launches');
 
+  // populate from api items on initial load
+  useEffect(() => {
+    if (items.length > 0 && data.length === 0) {
+      setData(items);
+    }
+  }, [items]);
+
   const filterLaunches = (year: number) => {
     if (!items) return;
     const filtered = filterByYear(items, year);
@@ -24,10 +31,8 @@ const App: FunctionComponent = () => {
   };
 
   const sortLaunches = (flag: string) => {
-    console.log('flag', flag);
     if (!items) return;
     const sorted = sortByYear(items, flag);
-    console.log('sorted', sorted[0].date_utc);
     setData(sorted);
   };
 
@@ -45,7 +50,7 @@ const App: FunctionComponent = () => {
             filterLaunches={filterLaunches}
             sortLaunches={sortLaunches}
           />
-          {loading || !data ? <Loader /> : <List listItems={data} />}
+          {loading ? <Loader /> : <List listItems={data} />}
         </ListContainer>
       </Layout>
     </>

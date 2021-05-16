@@ -8,11 +8,14 @@ interface ListProps {
 }
 
 const List: FunctionComponent<ListProps> = ({ listItems }) => {
-  const renderItems = (items: any) =>
-    items &&
-    items.map((item: Launch, index: number) => (
-      <ListItem item={item} index={index} key={item.name} />
-    ));
+  const renderItems = (items: Launch[] | null) =>
+    items && items.length > 0 ? (
+      items.map((item: Launch, index: number) => (
+        <ListItem item={item} index={index} key={item.name} />
+      ))
+    ) : (
+      <div>No launches available</div>
+    );
 
   return <StyledList>{renderItems(listItems)}</StyledList>;
 };

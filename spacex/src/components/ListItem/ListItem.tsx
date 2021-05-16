@@ -10,17 +10,17 @@ interface ListItemProps {
 
 const ListItem: FunctionComponent<ListItemProps> = ({
   index,
-  item: { name, date_utc },
+  item: { rocket, id, name, date_utc },
 }) => {
   return (
-    <StyledListItem key={name}>
+    <StyledListItem key={id}>
       <Index>#{index + 1}</Index>
       <Name>
         <p>{name}</p>
       </Name>
       <Details>
         <Date>{formatDate(date_utc)}</Date>
-        <Rocket>Rocket</Rocket>
+        <Rocket>n/a</Rocket>
       </Details>
     </StyledListItem>
   );

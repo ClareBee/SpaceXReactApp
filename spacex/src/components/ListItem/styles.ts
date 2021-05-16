@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledListItem = styled.li`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 1.125rem 1rem 1.0625rem 2rem;
