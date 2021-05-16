@@ -1,7 +1,7 @@
 import { FunctionComponent, useState, useEffect } from 'react';
 
 import { Loader } from './components/Loader/Loader';
-import { useGet } from './services/api/useGet';
+import { useGetData } from './services/api/useGetData';
 import { GlobalStyle } from './styles/GlobalStyle';
 import List from './components/List/List';
 import Layout from './containers/Layout';
@@ -17,7 +17,12 @@ const App: FunctionComponent = () => {
   const [data, setData] = useState<Launch[] | []>([]);
   const [flag, setFlag] = useState('asc');
   const [reload, setReload] = useState(false);
-  const { loading, error, data: items } = useGet('/launches', reload);
+  const {
+    loading,
+    error,
+    data: items,
+  } = useGetData('/launches', '/rockets', reload);
+
   // populate from api items on initial load and refreshed data
   useEffect(() => {
     setData(items);
