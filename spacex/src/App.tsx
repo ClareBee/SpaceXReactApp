@@ -15,30 +15,31 @@ import { Launch } from './types/types';
 
 const App: FunctionComponent = () => {
   const [data, setData] = useState<Launch[] | []>([]);
+  const [flag, setFlag] = useState('asc');
   const [reload, setReload] = useState(false);
   const { loading, error, data: items } = useGet('/launches', reload);
-  // populate from api items on initial load
+  // populate from api items on initial load and refreshed data
   useEffect(() => {
-    if (items.length > 0 && data.length === 0) {
-      setData(items);
-    }
+    setData(items);
   }, [items]);
 
+  useEffect(() => {
+    setData(sortByYear(items, flag));
+  }, [items, flag]);
+
   const filterLaunches = (year: number) => {
-    if (!items) return;
     const filtered = filterByYear(items, year);
     setData(filtered);
   };
 
-  const sortLaunches = (flag: string) => {
-    if (!items) return;
-    const sorted = sortByYear(items, flag);
-    setData(sorted);
+  const sortLaunches = () => {
+    setFlag(flag === 'asc' ? 'des' : 'asc');
   };
 
   const handleReload = () => {
     // trigger fresh data
     setReload(!reload);
+    setFlag('asc');
   };
 
   if (error) return <div>Something went wrong</div>;
@@ -53,6 +54,8 @@ const App: FunctionComponent = () => {
           <Actions
             filterLaunches={filterLaunches}
             sortLaunches={sortLaunches}
+            items={items}
+            flag={flag}
           />
           {loading ? <Loader /> : <List listItems={data} />}
         </ListContainer>

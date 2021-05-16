@@ -1,37 +1,37 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
+import { Launch } from '../../types/types';
 import { ActionsContainer, StyledButton, StyledSelect } from './styles';
 
 interface ActionProps {
   filterLaunches: (year: number) => void;
-  sortLaunches: (flag: string) => void;
+  sortLaunches: (items: Launch[] | [], flag: string) => void;
+  items: Launch[] | [];
+  flag: string;
 }
 
 const Actions: FunctionComponent<ActionProps> = ({
   filterLaunches,
   sortLaunches,
+  items,
+  flag,
 }) => {
-  const [ascending, setAscending] = useState(true);
   const [selectedYear, setSelectedYear] = useState('0');
   const ascendingText = 'Sort by Ascending';
   const descendingText = 'Sort by Descending';
 
   useEffect(() => {
     setSelectedYear('0');
-  }, [ascending]);
+  }, [flag]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedYear(e.target?.value);
     filterLaunches(Number(e.target.value));
   };
 
-  const toggleButton = () => {
-    setAscending(!ascending);
-    sortLaunches(ascending ? 'asc' : 'des');
-  };
-
   const handleClick = (e: React.MouseEvent): void => {
     e.preventDefault();
-    toggleButton();
+    console.log('flag', flag);
+    sortLaunches(items, flag);
   };
 
   const selectOptions = () => {
@@ -49,12 +49,12 @@ const Actions: FunctionComponent<ActionProps> = ({
   return (
     <ActionsContainer>
       <StyledSelect onChange={handleChange} value={selectedYear}>
-        <option value="null">Filter by Year</option>
+        <option value="undefined">Filter by Year</option>
         {selectOptions()}
       </StyledSelect>
 
       <StyledButton onClick={(e) => handleClick(e)}>
-        {ascending ? ascendingText : descendingText}
+        {flag === 'asc' ? ascendingText : descendingText}
       </StyledButton>
     </ActionsContainer>
   );
