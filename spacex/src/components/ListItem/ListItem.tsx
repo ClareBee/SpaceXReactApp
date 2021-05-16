@@ -20,7 +20,7 @@ const ListItem: FunctionComponent<ListItemProps> = ({
       </Name>
       <Details>
         <Date>{formatDate(date_utc)}</Date>
-        <Rocket>n/a</Rocket>
+        <Rocket>{rocket}</Rocket>
       </Details>
     </StyledListItem>
   );

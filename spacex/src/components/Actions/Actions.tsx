@@ -30,7 +30,6 @@ const Actions: FunctionComponent<ActionProps> = ({
 
   const handleClick = (e: React.MouseEvent): void => {
     e.preventDefault();
-    console.log('flag', flag);
     sortLaunches(items, flag);
   };
 

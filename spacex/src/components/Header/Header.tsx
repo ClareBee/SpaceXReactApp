@@ -23,14 +23,13 @@ export const Header: FunctionComponent<HeaderProps> = ({
     triggerSpin(reload);
   }, [reload]);
 
-  const triggerSpin = (reload: boolean) => {
-    console.log('reload');
+  const triggerSpin = (_reload: boolean) => {
     setReloading(true);
     setTimeout(() => {
       setReloading(false);
     }, 2000);
   };
-  console.log('reloading', reloading);
+
   return (
     <StyledHeader>
       <LogoContainer>
