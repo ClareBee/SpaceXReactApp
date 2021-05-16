@@ -47,7 +47,7 @@ const App: FunctionComponent = () => {
   return (
     <>
       <GlobalStyle />
-      <Header handleReload={handleReload} />
+      <Header handleReload={handleReload} reload={reload} />
       <Layout>
         <RocketImage />
         <ListContainer>
