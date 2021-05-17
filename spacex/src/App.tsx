@@ -1,17 +1,20 @@
 import { FunctionComponent, useState, useEffect } from 'react';
 
-import { Loader } from './components/Loader/Loader';
-import { useGetData } from './services/api/useGetData';
-import { GlobalStyle } from './styles/GlobalStyle';
-import List from './components/List/List';
 import Layout from './containers/Layout';
-import RocketImage from './components/RocketImage/RocketImage';
-import { Header } from './components/Header/Header';
+import ErrorBoundary from './containers/ErrorBoundary';
+import ListContainer from './containers/ListContainer';
+
+import { useGetData } from './services/api/useGetData';
 import { filterByYear } from './utils/filterByYear';
 import { sortByYear } from './utils/sortByYear';
-import ListContainer from './containers/ListContainer';
-import Actions from './components/Actions/Actions';
 import { Launch } from './types/types';
+import { GlobalStyle } from './styles/GlobalStyle';
+
+import List from './components/List/List';
+import { Loader } from './components/Loader/Loader';
+import RocketImage from './components/RocketImage/RocketImage';
+import { Header } from './components/Header/Header';
+import Actions from './components/Actions/Actions';
 
 const App: FunctionComponent = () => {
   const [data, setData] = useState<Launch[] | []>([]);
@@ -19,7 +22,7 @@ const App: FunctionComponent = () => {
   const [reload, setReload] = useState(false);
   const {
     loading,
-    error,
+    error: apiError,
     data: items,
   } = useGetData('/launches', '/rockets', reload);
 
@@ -47,10 +50,8 @@ const App: FunctionComponent = () => {
     setFlag('asc');
   };
 
-  if (error) return <div>Something went wrong</div>;
-
   return (
-    <>
+    <ErrorBoundary>
       <GlobalStyle />
       <Header handleReload={handleReload} reload={reload} />
       <Layout>
@@ -62,10 +63,11 @@ const App: FunctionComponent = () => {
             items={items}
             flag={flag}
           />
+          {apiError && <div>Something went wrong</div>}
           {loading ? <Loader /> : <List listItems={data} />}
         </ListContainer>
       </Layout>
-    </>
+    </ErrorBoundary>
   );
 };
 
