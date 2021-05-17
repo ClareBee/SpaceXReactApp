@@ -19,7 +19,7 @@ const App: FunctionComponent = () => {
   const [reload, setReload] = useState(false);
   const {
     loading,
-    error,
+    error: apiError,
     data: items,
   } = useGetData('/launches', '/rockets', reload);
 
@@ -47,8 +47,6 @@ const App: FunctionComponent = () => {
     setFlag('asc');
   };
 
-  if (error) return <div>Something went wrong</div>;
-
   return (
     <>
       <GlobalStyle />
@@ -62,6 +60,7 @@ const App: FunctionComponent = () => {
             items={items}
             flag={flag}
           />
+          {apiError && <div>Something went wrong</div>}
           {loading ? <Loader /> : <List listItems={data} />}
         </ListContainer>
       </Layout>
